@@ -11,8 +11,7 @@ services:
     container_name: docker.php
     tty: true
     depends_on:
-      - mysql
-      - postgres
+      - mariadb
       - redis
     networks:
       - docker.network
@@ -57,13 +56,13 @@ services:
     container_name: docker.phpmyadmin
     tty: true
     depends_on:
-      - mysql
+      - mariadb
     ports:
       - "8080:80"
     networks:
       - docker.network
     environment:
-      PMA_HOST: mysql
+      PMA_HOST: mariadb
       PMA_ARBITRARY: 1
       PMA_PORT: 3306
 
